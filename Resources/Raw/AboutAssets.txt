@@ -1,0 +1,12 @@
+Any raw assets you want to be deployed with your application can be placed in this directory
+(and child directories) and given a Build Action of "MauiAsset".
+
+    <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+
+These files will be deployed with your application and can be accessed using the following
+syntax:
+
+    using var stream = await FileSystem.OpenAppPackageFileAsync("mapping.json");
+
+Inside C# Shell there is no APK to deploy them into, so they are read straight out of this
+folder instead — by the path below it, so "data/mapping.json" is Resources/Raw/data/mapping.json.

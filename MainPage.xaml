@@ -1,0 +1,1492 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Voltwise.MainPage"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground},
+                                      Dark={StaticResource DarkBackground}}">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- ===================================================== -->
+        <!-- MAIN SCREENS                                          -->
+        <!-- ===================================================== -->
+
+        <Grid Grid.Row="0">
+
+            <!-- ================= HOME ================= -->
+
+            <ScrollView x:Name="HomeScreen"
+                        IsVisible="True">
+
+                <VerticalStackLayout Padding="20,18,20,28"
+                                     Spacing="24">
+
+                    <!-- PREMIUM FINTECH HEADER -->
+
+<Grid ColumnDefinitions="*,Auto"
+      RowDefinitions="Auto,Auto,Auto"
+      ColumnSpacing="14"
+      RowSpacing="18">
+
+    <!-- BRAND AND GREETING -->
+
+    <VerticalStackLayout
+        Grid.Row="0"
+        Grid.Column="0"
+        Spacing="16">
+
+        <!-- Brand identity -->
+
+        <HorizontalStackLayout
+            Spacing="9"
+            VerticalOptions="Center">
+
+            <Border
+                WidthRequest="32"
+                HeightRequest="32"
+                BackgroundColor="{StaticResource VoltGreen}"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 11"
+                Padding="6">
+
+                <Grid>
+                    <Path
+                        Data="M11,1 L4,10 L9,10 L7,17 L14,7 L9,7 Z"
+                        Fill="#20262D"
+                        Stroke="#20262D"
+                        StrokeThickness="0.7"
+                        Aspect="Uniform"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                </Grid>
+
+            </Border>
+
+            <VerticalStackLayout
+                Spacing="1"
+                VerticalOptions="Center">
+
+                <Label
+                    Text="VOLTWISE"
+                    FontSize="13"
+                    FontAttributes="Bold"
+                    CharacterSpacing="2"
+                    TextColor="{AppThemeBinding Light={StaticResource LightText},
+                                                Dark={StaticResource DarkText}}"/>
+
+                <Label
+                    Text="ENERGY MANAGEMENT"
+                    FontSize="8"
+                    CharacterSpacing="1.4"
+                    TextColor="{AppThemeBinding Light={StaticResource LightMuted},
+                                                Dark={StaticResource DarkMuted}}"/>
+
+            </VerticalStackLayout>
+
+        </HorizontalStackLayout>
+
+        <!-- Greeting -->
+
+        <VerticalStackLayout Spacing="5">
+
+            <Label
+                Text="YOUR ENERGY, SIMPLIFIED"
+                FontSize="10"
+                FontAttributes="Bold"
+                CharacterSpacing="1.7"
+                TextColor="{StaticResource VoltGreenDark}"/>
+
+            <Label
+                Text="Power, understood."
+                FontSize="29"
+                FontAttributes="Bold"
+                FontFamily="ManropeExtraBold"
+                CharacterSpacing="-0.8"
+                LineBreakMode="WordWrap"
+                TextColor="{AppThemeBinding Light={StaticResource LightText},
+                                            Dark={StaticResource DarkText}}"/>
+
+            <Label
+                x:Name="GreetingLabel"
+                Text="Your household. Your energy. Clearer decisions."
+                Style="{StaticResource SupportingText}"
+                FontSize="12"
+                LineBreakMode="WordWrap"
+                Margin="0,2,0,0"/>
+
+        </VerticalStackLayout>
+
+    </VerticalStackLayout>
+
+    <!-- THEME CONTROL -->
+
+    <Border
+        Grid.Row="0"
+        Grid.Column="1"
+        WidthRequest="46"
+        HeightRequest="46"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightSurface},
+                                          Dark={StaticResource DarkSurface}}"
+        Stroke="{AppThemeBinding Light={StaticResource LightBorder},
+                                 Dark={StaticResource DarkBorder}}"
+        StrokeThickness="1"
+        StrokeShape="RoundRectangle 15"
+        VerticalOptions="Start">
+
+        <Button
+            Text="◐"
+            FontSize="22"
+            BackgroundColor="Transparent"
+            TextColor="{AppThemeBinding Light={StaticResource LightText},
+                                        Dark={StaticResource DarkText}}"
+            Padding="0"
+            Clicked="OnThemeToggleClicked"/>
+
+    </Border>
+
+</Grid>
+
+                        <!-- Status strip -->
+
+                        <Border Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Padding="14,12"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightSurface},
+                                                                  Dark={StaticResource DarkSurface}}"
+                                Stroke="{AppThemeBinding Light={StaticResource LightBorder},
+                                                         Dark={StaticResource DarkBorder}}"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 18">
+
+                            <Grid ColumnDefinitions="Auto,*,Auto"
+                                  ColumnSpacing="11">
+
+                                <Border WidthRequest="36"
+                                        HeightRequest="36"
+                                        BackgroundColor="{StaticResource VoltGreen}"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 12"
+                                        VerticalOptions="Center">
+
+                                    <Label Text="V"
+                                           TextColor="#172116"
+                                           FontSize="21"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1"
+                                                     Spacing="3"
+                                                     VerticalOptions="Center">
+
+                                    <Label Text="YOUR ENERGY OVERVIEW"
+                                           FontSize="10"
+                                           FontAttributes="Bold"
+                                           CharacterSpacing="0.8"/>
+
+                                    <Label x:Name="HeaderStatusLabel"
+                                           Text="Your personal energy dashboard"
+                                           FontSize="11"
+                                           Style="{StaticResource SupportingText}"/>
+
+                                </VerticalStackLayout>
+
+                                <Border Grid.Column="2"
+                                        Padding="9,6"
+                                        BackgroundColor="{AppThemeBinding Light={StaticResource LightSurfaceAlt},
+                                                                          Dark={StaticResource DarkSurfaceAlt}}"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 10"
+                                        VerticalOptions="Center">
+
+                                    <Label x:Name="HeaderDateLabel"
+                                           Text="TODAY"
+                                           FontSize="9"
+                                           FontAttributes="Bold"
+                                           CharacterSpacing="0.5"/>
+
+                                </Border>
+
+                            </Grid>
+
+                        </Border>
+
+                    
+
+                    <!-- Household profile -->
+
+                    <Border Style="{StaticResource DashboardCard}">
+
+                        <VerticalStackLayout Spacing="14">
+
+                            <Grid ColumnDefinitions="*,Auto">
+
+                                <VerticalStackLayout Spacing="5">
+
+                                    <Label Text="HOUSEHOLD PROFILE"
+                                           FontSize="10"
+                                           CharacterSpacing="1.2"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource VoltGreen}"/>
+
+                                    <Label x:Name="LocationLabel"
+                                           Text="Setup required"
+                                           FontSize="21"
+                                           FontAttributes="Bold"/>
+
+                                    <Label x:Name="SupplyLabel"
+                                           Text="Configure your electricity tariff"
+                                           Style="{StaticResource SupportingText}"/>
+
+                                </VerticalStackLayout>
+
+                                <Button Grid.Column="1"
+                                        Text="Edit"
+                                        Clicked="OnSetupClicked"
+                                        Style="{StaticResource PrimaryButton}"
+                                        VerticalOptions="Center"/>
+
+                            </Grid>
+
+                            <BoxView HeightRequest="1"
+                                     Color="{AppThemeBinding Light={StaticResource LightBorder},
+                                                             Dark={StaticResource DarkBorder}}"/>
+
+                            <Label x:Name="ProfileStatusLabel"
+                                   Text="Configure your profile to improve your energy estimates."
+                                   Style="{StaticResource SupportingText}"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <!-- Metrics -->
+
+                    <VerticalStackLayout Spacing="13">
+
+                        <Grid ColumnDefinitions="*,Auto">
+
+                            <Label Text="The big picture"
+                                   Style="{StaticResource SectionTitle}"/>
+
+                            <Label Grid.Column="1"
+                                   Text="OVERVIEW"
+                                   FontSize="9"
+                                   CharacterSpacing="1"
+                                   FontAttributes="Bold"
+                                   Style="{StaticResource SupportingText}"
+                                   VerticalOptions="Center"/>
+
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*,*"
+                              RowDefinitions="Auto,Auto"
+                              ColumnSpacing="12"
+                              RowSpacing="12">
+
+                            <Border Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource DashboardCard}">
+
+                                <VerticalStackLayout Spacing="10">
+
+                                    <Border WidthRequest="34"
+                                            HeightRequest="34"
+                                            HorizontalOptions="Start"
+                                            BackgroundColor="{AppThemeBinding Light={StaticResource LightSurfaceAlt},
+                                                                              Dark={StaticResource DarkSurfaceAlt}}"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 11">
+
+                                        <Path Data="M3,10 L9,4 L15,10 M5,9 L5,16 L13,16 L13,9"
+                                              Stroke="{StaticResource VoltGreen}"
+                                              StrokeThickness="1.8"
+                                              StrokeLineCap="Round"
+                                              StrokeLineJoin="Round"
+                                              Fill="Transparent"
+                                              WidthRequest="19"
+                                              HeightRequest="19"
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"/>
+
+                                    </Border>
+
+                                    <Label Text="MONTHLY COST"
+                                           FontSize="9"
+                                           CharacterSpacing="0.6"
+                                           FontAttributes="Bold"
+                                           Style="{StaticResource SupportingText}"/>
+
+                                    <Label x:Name="MonthlyCostLabel"
+                                           Text="₦0"
+                                           FontSize="25"
+                                           FontAttributes="Bold"
+                                           LineBreakMode="TailTruncation"/>
+
+                                    <Label Text="Estimated bill"
+                                           FontSize="11"
+                                           Style="{StaticResource SupportingText}"/>
+
+                                </VerticalStackLayout>
+
+                            </Border>
+
+                            <Border Grid.Row="0"
+                                    Grid.Column="1"
+                                    Style="{StaticResource DashboardCard}">
+
+                                <VerticalStackLayout Spacing="10">
+
+                                    <Border WidthRequest="34"
+                                            HeightRequest="34"
+                                            HorizontalOptions="Start"
+                                            BackgroundColor="{AppThemeBinding Light={StaticResource LightSurfaceAlt},
+                                                                              Dark={StaticResource DarkSurfaceAlt}}"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 11">
+
+                                        <Path Data="M4,4 L14,4 L14,16 L4,16 Z M7,7 L11,7 M7,10 L11,10 M7,13 L10,13"
+                                              Stroke="{StaticResource VoltGreen}"
+                                              StrokeThickness="1.7"
+                                              StrokeLineCap="Round"
+                                              StrokeLineJoin="Round"
+                                              Fill="Transparent"
+                                              WidthRequest="19"
+                                              HeightRequest="19"
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"/>
+
+                                    </Border>
+
+                                    <Label Text="APPLIANCES"
+                                           FontSize="9"
+                                           CharacterSpacing="0.6"
+                                           FontAttributes="Bold"
+                                           Style="{StaticResource SupportingText}"/>
+
+                                    <Label x:Name="ApplianceCountLabel"
+                                           Text="0"
+                                           FontSize="25"
+                                           FontAttributes="Bold"/>
+
+                                    <Label Text="Tracked devices"
+                                           FontSize="11"
+                                           Style="{StaticResource SupportingText}"/>
+
+                                </VerticalStackLayout>
+
+                            </Border>
+
+                            <Border Grid.Row="1"
+                                    Grid.Column="0"
+                                    Style="{StaticResource DashboardCard}">
+
+                                <VerticalStackLayout Spacing="10">
+
+                                    <Border WidthRequest="34"
+                                            HeightRequest="34"
+                                            HorizontalOptions="Start"
+                                            BackgroundColor="{AppThemeBinding Light={StaticResource LightSurfaceAlt},
+                                                                              Dark={StaticResource DarkSurfaceAlt}}"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 11">
+
+                                        <Path Data="M9,2 L9,9 L14,9 L7,17 L7,10 L3,10 Z"
+                                              Stroke="{StaticResource VoltGreen}"
+                                              StrokeThickness="1.7"
+                                              StrokeLineCap="Round"
+                                              StrokeLineJoin="Round"
+                                              Fill="Transparent"
+                                              WidthRequest="19"
+                                              HeightRequest="19"
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"/>
+
+                                    </Border>
+
+                                    <Label Text="OUTAGES"
+                                           FontSize="9"
+                                           CharacterSpacing="0.6"
+                                           FontAttributes="Bold"
+                                           Style="{StaticResource SupportingText}"/>
+
+                                    <Label x:Name="OutageCountLabel"
+                                           Text="0"
+                                           FontSize="25"
+                                           FontAttributes="Bold"/>
+
+                                    <Label Text="Recorded incidents"
+                                           FontSize="11"
+                                           Style="{StaticResource SupportingText}"/>
+
+                                </VerticalStackLayout>
+
+                            </Border>
+
+                            <Border Grid.Row="1"
+                                    Grid.Column="1"
+                                    Style="{StaticResource DashboardCard}">
+
+                                <VerticalStackLayout Spacing="10">
+
+                                    <Border WidthRequest="34"
+                                            HeightRequest="34"
+                                            HorizontalOptions="Start"
+                                            BackgroundColor="{AppThemeBinding Light={StaticResource LightSurfaceAlt},
+                                                                              Dark={StaticResource DarkSurfaceAlt}}"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 11">
+
+                                        <Path Data="M3,5 L15,5 L15,13 L3,13 Z M6,16 L12,16 M9,13 L9,16"
+                                              Stroke="{StaticResource VoltGreen}"
+                                              StrokeThickness="1.7"
+                                              StrokeLineCap="Round"
+                                              StrokeLineJoin="Round"
+                                              Fill="Transparent"
+                                              WidthRequest="19"
+                                              HeightRequest="19"
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"/>
+
+                                    </Border>
+
+                                    <Label Text="BACKUP RUNTIME"
+                                           FontSize="9"
+                                           CharacterSpacing="0.3"
+                                           FontAttributes="Bold"
+                                           Style="{StaticResource SupportingText}"/>
+
+                                    <Label x:Name="RuntimeLabel"
+                                           Text="Not set"
+                                           FontSize="23"
+                                           FontAttributes="Bold"
+                                           LineBreakMode="TailTruncation"/>
+
+                                    <Label Text="Estimated hours"
+                                           FontSize="11"
+                                           Style="{StaticResource SupportingText}"/>
+
+                                </VerticalStackLayout>
+
+                            </Border>
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+                    
+                    <!-- ================= MONTHLY BUDGET ================= -->
+
+<Border Style="{StaticResource DashboardCard}">
+
+    <VerticalStackLayout Spacing="16">
+
+        <!-- Header -->
+
+        <Grid ColumnDefinitions="*,Auto"
+              ColumnSpacing="12">
+
+            <VerticalStackLayout Spacing="5">
+
+                <Label Text="MONTHLY BUDGET"
+                       FontSize="10"
+                       CharacterSpacing="1.2"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource VoltGreen}"/>
+
+                <Label Text="Stay in control."
+                       FontSize="22"
+                       FontAttributes="Bold"/>
+
+                <Label Text="Compare your budget with your projected 30-day electricity cost."
+Style="{StaticResource SupportingText}"
+FontSize="12"/>
+
+            </VerticalStackLayout>
+
+            <Border Grid.Column="1"
+                    WidthRequest="43"
+                    HeightRequest="43"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightSurfaceAlt},
+                                                      Dark={StaticResource DarkSurfaceAlt}}"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 14"
+                    VerticalOptions="Start">
+
+                <Label Text="₦"
+                       FontSize="23"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource VoltGreen}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+
+            </Border>
+
+        </Grid>
+
+        <BoxView HeightRequest="1"
+                 Color="{AppThemeBinding Light={StaticResource LightBorder},
+                                         Dark={StaticResource DarkBorder}}"/>
+
+        <!-- Budget amount -->
+
+        <Grid ColumnDefinitions="*,Auto"
+              ColumnSpacing="10">
+
+            <VerticalStackLayout Spacing="5">
+
+                <Label Text="MONTHLY LIMIT"
+                       FontSize="9"
+                       CharacterSpacing="0.8"
+                       FontAttributes="Bold"
+                       Style="{StaticResource SupportingText}"/>
+
+                <Label x:Name="BudgetLimitLabel"
+                       Text="Not set"
+                       FontSize="25"
+                       FontAttributes="Bold"/>
+
+            </VerticalStackLayout>
+
+            <Button Grid.Column="1"
+                    Text="Set budget"
+                    Clicked="OnSetBudgetClicked"
+                    Style="{StaticResource PrimaryButton}"
+                    VerticalOptions="Center"/>
+
+        </Grid>
+
+        <!-- Spending -->
+
+        <Grid ColumnDefinitions="*,Auto"
+              ColumnSpacing="8">
+
+            <VerticalStackLayout Spacing="4">
+
+               <Label Text="PROJECTED MONTHLY COST"
+FontSize="9"
+CharacterSpacing="0.7"
+FontAttributes="Bold"
+Style="{StaticResource SupportingText}"/>
+
+                <Label x:Name="BudgetSpentLabel"
+                       Text="₦0"
+                       FontSize="20"
+                       FontAttributes="Bold"/>
+
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1"
+                                 Spacing="4"
+                                 HorizontalOptions="End">
+
+                <Label Text="REMAINING"
+                       FontSize="9"
+                       CharacterSpacing="0.7"
+                       FontAttributes="Bold"
+                       Style="{StaticResource SupportingText}"
+                       HorizontalTextAlignment="End"/>
+
+                <Label x:Name="BudgetRemainingLabel"
+                       Text="Not set"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="End"/>
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+        <!-- Progress -->
+
+        <ProgressBar x:Name="BudgetProgressBar"
+                     Progress="0"
+                     ProgressColor="{StaticResource VoltGreen}"
+                     BackgroundColor="{AppThemeBinding Light={StaticResource LightBorder},
+                                                       Dark={StaticResource DarkBorder}}"
+                     HeightRequest="8"/>
+
+        <Grid ColumnDefinitions="*,Auto">
+
+            <Label x:Name="BudgetProgressLabel"
+                   Text="Set a budget to begin tracking."
+                   Style="{StaticResource SupportingText}"
+                   FontSize="11"/>
+
+            <Label x:Name="BudgetPercentageLabel"
+                   Grid.Column="1"
+                   Text="0%"
+                   FontSize="11"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"/>
+
+        </Grid>
+
+        <!-- Budget status -->
+
+        <Border x:Name="BudgetStatusCard"
+                Padding="12"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LightSurfaceAlt},
+                                                  Dark={StaticResource DarkSurfaceAlt}}"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 14">
+
+            <Label x:Name="BudgetStatusLabel"
+                   Text="Set a monthly limit to monitor your electricity costs."
+                   Style="{StaticResource SupportingText}"
+                   FontSize="12"/>
+
+        </Border>
+
+    </VerticalStackLayout>
+
+</Border>           
+                <!-- Quick actions -->
+
+                    <VerticalStackLayout Spacing="13">
+
+                        <Label Text="Make a move"
+                               Style="{StaticResource SectionTitle}"/>
+
+                        <Grid ColumnDefinitions="*,*"
+                              RowDefinitions="Auto,Auto"
+                              ColumnSpacing="10"
+                              RowSpacing="10">
+
+                            <Button Grid.Row="0"
+                                    Grid.Column="0"
+                                    Text="+  Add appliance"
+                                    Clicked="OnRecordUsageClicked"
+                                    Style="{StaticResource PrimaryButton}"/>
+
+                            <Button Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="Plan backup"
+                                    Clicked="OnBackupClicked"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource LightSurface},
+                                                                      Dark={StaticResource DarkSurface}}"
+                                    TextColor="{AppThemeBinding Light={StaticResource LightText},
+                                                                Dark={StaticResource DarkText}}"
+                                    BorderColor="{AppThemeBinding Light={StaticResource LightBorder},
+                                                                  Dark={StaticResource DarkBorder}}"
+                                    BorderWidth="1"
+                                    CornerRadius="18"
+                                    Padding="12,13"/>
+
+                            <Button Grid.Row="1"
+                                    Grid.Column="0"
+                                    Text="Log outage"
+                                    Clicked="OnLogOutageClicked"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource LightSurface},
+                                                                      Dark={StaticResource DarkSurface}}"
+                                    TextColor="{AppThemeBinding Light={StaticResource LightText},
+                                                                Dark={StaticResource DarkText}}"
+                                    BorderColor="{AppThemeBinding Light={StaticResource LightBorder},
+                                                                  Dark={StaticResource DarkBorder}}"
+                                    BorderWidth="1"
+                                    CornerRadius="18"
+                                    Padding="12,13"/>
+
+                            <Button Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="View insights"
+                                    Clicked="OnInsightsClicked"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource LightSurface},
+                                                                      Dark={StaticResource DarkSurface}}"
+                                    TextColor="{AppThemeBinding Light={StaticResource LightText},
+                                                                Dark={StaticResource DarkText}}"
+                                    BorderColor="{AppThemeBinding Light={StaticResource LightBorder},
+                                                                  Dark={StaticResource DarkBorder}}"
+                                    BorderWidth="1"
+                                    CornerRadius="18"
+                                    Padding="12,13"/>
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+                    <!-- Recent activity -->
+
+                    <VerticalStackLayout Spacing="12">
+
+                        <Label Text="Recent activity"
+                               Style="{StaticResource SectionTitle}"/>
+
+                        <Border Style="{StaticResource DashboardCard}">
+
+                            <Label x:Name="RecentActivityLabel"
+                                   Text="Your recent activity will appear here."
+                                   Style="{StaticResource SupportingText}"/>
+
+                        </Border>
+
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+
+            </ScrollView>
+
+            <!-- ================= USAGE ================= -->
+
+            <ScrollView x:Name="UsageScreen"
+                        IsVisible="False">
+
+                <VerticalStackLayout Padding="20,22,20,28"
+                                     Spacing="22">
+
+                    <VerticalStackLayout Spacing="7">
+
+                        <Label Text="ENERGY MANAGEMENT"
+                               FontSize="10"
+                               CharacterSpacing="1.5"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource VoltGreen}"/>
+
+                        <Label Text="Appliance ledger"
+                               Style="{StaticResource PageTitle}"/>
+
+                        <Label Text="Understand where your electricity goes."
+                               Style="{StaticResource SupportingText}"/>
+
+                    </VerticalStackLayout>
+
+                    <Border Style="{StaticResource DashboardCard}">
+
+                        <VerticalStackLayout Spacing="10">
+
+                            <Label Text="Monthly consumption"
+                                   Style="{StaticResource SectionTitle}"/>
+
+                            <Label x:Name="MonthlyConsumptionLabel"
+                                   Text="0 kWh"
+                                   FontSize="31"
+                                   FontAttributes="Bold"/>
+
+                            <Label Text="Estimated from wattage, daily usage, quantity and a 30-day month."
+                                   Style="{StaticResource SupportingText}"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <Border Style="{StaticResource DashboardCard}">
+
+                        <VerticalStackLayout Spacing="15">
+
+                            <Grid ColumnDefinitions="*,Auto">
+
+                                <Label Text="Your appliances"
+                                       Style="{StaticResource SectionTitle}"
+                                       VerticalOptions="Center"/>
+
+                                <Button Grid.Column="1"
+                                        Text="+ Add"
+                                        Clicked="OnRecordUsageClicked"
+                                        Style="{StaticResource PrimaryButton}"/>
+
+                            </Grid>
+
+                            <Label Text="Tap Edit to change an appliance or Delete to remove it."
+                                   Style="{StaticResource SupportingText}"/>
+
+                            <VerticalStackLayout x:Name="ApplianceList"
+                                                 Spacing="10"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <Border Style="{StaticResource DashboardCard}">
+
+                        <VerticalStackLayout Spacing="12">
+
+                            <Label Text="Estimated electricity cost"
+                                   Style="{StaticResource SectionTitle}"/>
+
+                            <Label x:Name="UsageCostLabel"
+                                   Text="₦0"
+                                   FontSize="28"
+                                   FontAttributes="Bold"/>
+
+                            <Label x:Name="UsageTariffLabel"
+                                   Text="Configure your tariff in your household profile."
+                                   Style="{StaticResource SupportingText}"/>
+
+                            <Button Text="Update household profile"
+                                    Clicked="OnSetupClicked"
+                                    Style="{StaticResource PrimaryButton}"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <Label Text="These figures are estimates, not meter readings or actual electricity bills."
+                           Style="{StaticResource SupportingText}"/>
+
+                </VerticalStackLayout>
+
+            </ScrollView>
+
+            <!-- ================= BACKUP ================= -->
+
+            <ScrollView x:Name="BackupScreen"
+                        IsVisible="False">
+
+                <VerticalStackLayout Padding="20,22,20,28"
+                                     Spacing="22">
+
+                    <VerticalStackLayout Spacing="7">
+
+                        <Label Text="ENERGY RESILIENCE"
+                               FontSize="10"
+                               CharacterSpacing="1.5"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource VoltGreen}"/>
+
+                        <Label Text="Backup planner"
+                               Style="{StaticResource PageTitle}"/>
+
+                        <Label Text="Know what your battery can realistically power."
+                               Style="{StaticResource SupportingText}"/>
+
+                    </VerticalStackLayout>
+
+                    <Border Style="{StaticResource DashboardCard}">
+
+                        <VerticalStackLayout Spacing="15">
+
+                            <Label Text="Estimated runtime"
+                                   Style="{StaticResource SectionTitle}"/>
+
+                            <Label x:Name="BackupRuntimeLabel"
+                                   Text="Not configured"
+                                   FontSize="34"
+                                   FontAttributes="Bold"/>
+
+                            <Label x:Name="BackupDetailsLabel"
+                                   Text="Configure your battery and connected load."
+                                   Style="{StaticResource SupportingText}"/>
+
+                            <Button Text="Configure backup system"
+                                    Clicked="OnConfigureBackupClicked"
+                                    Style="{StaticResource PrimaryButton}"/>
+
+                            <Button Text="Clear backup configuration"
+                                    Clicked="OnClearBackupClicked"
+                                    BackgroundColor="Transparent"
+                                    TextColor="{StaticResource DangerRed}"
+                                    BorderColor="{StaticResource DangerRed}"
+                                    BorderWidth="1"
+                                    CornerRadius="16"
+                                    Padding="14,12"/>
+                                    
+
+                        </VerticalStackLayout>
+
+                    </Border>
+                    
+                    <Border Style="{StaticResource DashboardCard}">
+    <VerticalStackLayout Spacing="14">    <Label
+        Text="SMART BACKUP PLANNER"
+        FontSize="11"
+        FontAttributes="Bold"
+        TextColor="#A3E635"
+        CharacterSpacing="1.5" />
+
+    <Label
+        Text="Plan essential appliances"
+        Style="{StaticResource SectionTitle}" />
+
+    <Label
+        Text="Select the appliances you need during an outage to estimate their combined load and expected battery runtime."
+        Style="{StaticResource SupportingText}" />
+
+    <Label
+        Text="Available appliances"
+        FontAttributes="Bold"
+        FontSize="14" />
+
+    <VerticalStackLayout
+        x:Name="BackupApplianceChoices"
+        Spacing="10" />
+
+    <Label
+        Text="Required backup duration (hours)"
+        FontAttributes="Bold"
+        FontSize="14" />
+
+    <Entry
+        x:Name="BackupPlanHoursEntry"
+        Placeholder="Enter required hours"
+        Text="4"
+        Keyboard="Numeric"
+        BackgroundColor="#202020"
+        TextColor="White"
+        PlaceholderColor="#888888" />
+
+    <Button
+        Text="Calculate selected load"
+        Clicked="OnCalculateBackupPlanClicked"
+        Style="{StaticResource PrimaryButton}" />
+
+    <Border
+        Stroke="#353535"
+        StrokeThickness="1"
+        Padding="14"
+        BackgroundColor="#191919"
+        StrokeShape="RoundRectangle 12">
+
+        <VerticalStackLayout Spacing="9">
+
+            <Label
+                Text="PLAN RESULTS"
+                FontSize="11"
+                FontAttributes="Bold"
+                TextColor="#A3E635"
+                CharacterSpacing="1.5" />
+
+            <Label
+                x:Name="BackupPlanLoadLabel"
+                Text="Selected load: not calculated"
+                FontAttributes="Bold"
+                FontSize="16" />
+
+            <Label
+                x:Name="BackupPlanRuntimeLabel"
+                Text="Estimated runtime: not calculated"
+                FontSize="14" />
+
+            <Label
+                x:Name="BackupPlanEnergyLabel"
+                Text="Energy required: not calculated"
+                FontSize="14" />
+
+            <Label
+                x:Name="BackupPlanStatusLabel"
+                Text="Configure your backup system and add appliances to begin."
+                Style="{StaticResource SupportingText}" />
+
+        </VerticalStackLayout>
+    </Border>
+
+</VerticalStackLayout>
+
+</Border>
+
+                    <Border Style="{StaticResource DashboardCard}">
+
+                        <VerticalStackLayout Spacing="10">
+
+                            <Label Text="How the estimate works"
+                                   Style="{StaticResource SectionTitle}"/>
+
+                            <Label Text="Nominal battery energy = voltage × capacity × battery count."
+                                   Style="{StaticResource SupportingText}"/>
+
+                            <Label Text="Estimated runtime = nominal energy × usable capacity × inverter efficiency ÷ connected load."
+                                   Style="{StaticResource SupportingText}"/>
+
+                            <Label Text="Actual runtime varies with battery chemistry, age, temperature, inverter losses and changing loads."
+                                   Style="{StaticResource SupportingText}"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                </VerticalStackLayout>
+
+            </ScrollView>
+
+            <!-- ================= INSIGHTS ================= -->
+
+            <ScrollView x:Name="InsightsScreen"
+                        IsVisible="False">
+
+                <VerticalStackLayout Padding="20,22,20,28"
+                                     Spacing="22">
+
+                    <VerticalStackLayout Spacing="7">
+
+                        <Label Text="YOUR ENERGY DATA"
+                               FontSize="10"
+                               CharacterSpacing="1.5"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource VoltGreen}"/>
+
+                        <Label Text="Insights"
+                               Style="{StaticResource PageTitle}"/>
+
+                        <Label Text="Your household's energy story, in numbers."
+                               Style="{StaticResource SupportingText}"/>
+
+                    </VerticalStackLayout>
+
+                    <Border Style="{StaticResource DashboardCard}">
+
+                       <Border Style="{StaticResource DashboardCard}"><VerticalStackLayout Spacing="12">
+
+    <Label Text="Consumption overview"
+           Style="{StaticResource SectionTitle}"/>
+
+    <Label x:Name="InsightsConsumptionLabel"
+           Text="0 kWh per month"
+           FontSize="24"
+           FontAttributes="Bold"/>
+
+    <Label x:Name="InsightsCostLabel"
+           Text="Estimated monthly cost: ₦0"
+           Style="{StaticResource SupportingText}"/>
+
+    <Label x:Name="InsightsApplianceLabel"
+           Text="No appliances recorded."
+           Style="{StaticResource SupportingText}"/>
+
+    <BoxView HeightRequest="1"
+             Color="#303030"/>
+
+    <Label Text="ENERGY SAVINGS"
+           FontSize="12"
+           FontAttributes="Bold"
+           CharacterSpacing="1.2"
+           TextColor="#A3E635"/>
+
+    <Label Text="Personalized recommendations"
+           Style="{StaticResource SectionTitle}"/>
+
+    <Label x:Name="EnergyRecommendationsLabel"
+           Text="Your recommendations will appear here."
+           Style="{StaticResource SupportingText}"/>
+           
+           <BoxView
+    HeightRequest="1"
+    Color="#303030"
+    Margin="0,8" />
+
+<Label
+    Text="MONTHLY REPORT"
+    FontSize="11"
+    FontAttributes="Bold"
+    TextColor="#A3E635"
+    CharacterSpacing="1.5" />
+
+<Label
+    Text="Your energy at a glance"
+    Style="{StaticResource SectionTitle}" />
+
+<Label
+    Text="Share a report of your estimated consumption, energy costs, savings opportunities, outages and backup readiness."
+    Style="{StaticResource SupportingText}" />
+
+<Button
+    Text="Generate and Share Report"
+    Clicked="OnShareEnergyReportClicked"
+    Style="{StaticResource PrimaryButton}" />
+
+</VerticalStackLayout>
+
+</Border>
+
+                    </Border>
+
+                    <Border Style="{StaticResource DashboardCard}">
+
+                        <VerticalStackLayout Spacing="13">
+
+                            <Grid ColumnDefinitions="*,Auto">
+
+                                <Label Text="Outage overview"
+                                       Style="{StaticResource SectionTitle}"
+                                       VerticalOptions="Center"/>
+
+                                <Button Grid.Column="1"
+                                        Text="+ Log"
+                                        Clicked="OnLogOutageClicked"
+                                        Style="{StaticResource PrimaryButton}"/>
+
+                            </Grid>
+
+                            <Label x:Name="InsightsOutageLabel"
+                                   Text="No outages recorded."
+                                   Style="{StaticResource SupportingText}"/>
+
+                            <Label x:Name="InsightsDurationLabel"
+                                   Text="Total recorded outage duration: 0 minutes"
+                                   Style="{StaticResource SupportingText}"/>
+
+                            <VerticalStackLayout x:Name="OutageList"
+                                                 Spacing="10"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <Border Style="{StaticResource DashboardCard}">
+
+                        <VerticalStackLayout Spacing="12">
+
+                            <Label Text="Backup readiness"
+                                   Style="{StaticResource SectionTitle}"/>
+
+                            <Label x:Name="InsightsBackupLabel"
+                                   Text="No backup configuration saved."
+                                   Style="{StaticResource SupportingText}"/>
+
+                            <Button Text="Open backup planner"
+                                    Clicked="OnBackupClicked"
+                                    Style="{StaticResource PrimaryButton}"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <Border Style="{StaticResource DashboardCard}">
+
+                        <VerticalStackLayout Spacing="12">
+
+                            <Label Text="Household data"
+                                   Style="{StaticResource SectionTitle}"/>
+
+                            <Label Text="Your records are stored locally on this device."
+                                   Style="{StaticResource SupportingText}"/>
+
+                            <Button Text="Reset household profile"
+                                    Clicked="OnResetProfileClicked"
+                                    BackgroundColor="Transparent"
+                                    TextColor="{StaticResource DangerRed}"
+                                    BorderColor="{StaticResource DangerRed}"
+                                    BorderWidth="1"
+                                    CornerRadius="16"
+                                    Padding="14,12"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <Label Text="Insights use your saved records. They do not use live meter readings or electricity-provider data."
+                           Style="{StaticResource SupportingText}"/>
+
+                </VerticalStackLayout>
+
+            </ScrollView>
+
+        </Grid>
+
+<!-- Voltwise Bottom Navigation -->
+
+<Border
+    x:Name="NavigationBar"
+    Grid.Row="1"
+    HeightRequest="76"
+    MaximumHeightRequest="76"
+    VerticalOptions="End"
+    BackgroundColor="{AppThemeBinding Light={StaticResource LightSurface}, Dark={StaticResource DarkSurface}}"
+    Stroke="{AppThemeBinding Light={StaticResource LightBorder}, Dark={StaticResource DarkBorder}}"
+    StrokeThickness="1"
+    Padding="8,5"
+    StrokeShape="RoundRectangle 22">
+
+    <Grid
+        ColumnDefinitions="*,*,*,*"
+        ColumnSpacing="4">
+
+        <!-- HOME -->
+        <Grid Grid.Column="0" RowDefinitions="Auto,Auto">
+
+            <Button
+                x:Name="HomeNavButton"
+                Grid.RowSpan="2"
+                Clicked="OnHomeTapped"
+                BackgroundColor="Transparent"
+                BorderWidth="0"
+                Padding="0"
+                CornerRadius="15"
+                Text=""
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+
+            <Path
+                x:Name="HomeNavIcon"
+                Grid.Row="0"
+                Data="M3,9 L9,3 L15,9 M5,8 L5,16 L13,16 L13,8 M8,16 L8,11 L10,11 L10,16"
+                Stroke="{StaticResource VoltGreen}"
+                StrokeThickness="1.7"
+                StrokeLineCap="Round"
+                StrokeLineJoin="Round"
+                Fill="Transparent"
+                WidthRequest="22"
+                HeightRequest="22"
+                Aspect="Uniform"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                InputTransparent="True"
+                Margin="0,6,0,0"
+                 />
+
+            <Label
+                x:Name="HomeNavLabel"
+                Grid.Row="1"
+                Text="Home"
+                FontSize="11"
+                FontAttributes="Bold"
+                TextColor="{StaticResource VoltGreen}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                InputTransparent="True" />
+
+        </Grid>
+
+        <!-- USAGE -->
+        <Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+
+            <Button
+                x:Name="UsageNavButton"
+                Grid.RowSpan="2"
+                Clicked="OnUsageTapped"
+                BackgroundColor="Transparent"
+                BorderWidth="0"
+                Padding="0"
+                CornerRadius="15"
+                Text=""
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" 
+                 />
+
+            <Path
+                x:Name="UsageNavIcon"
+                Grid.Row="0"
+                Data="M4,3 L14,3 L14,16 L4,16 Z M7,6 L11,6 M7,9 L11,9 M7,12 L10,12"
+                Stroke="{AppThemeBinding Light={StaticResource LightMuted}, Dark={StaticResource DarkMuted}}"
+                StrokeThickness="1.7"
+                StrokeLineCap="Round"
+                StrokeLineJoin="Round"
+                Fill="Transparent"
+                WidthRequest="22"
+                HeightRequest="22"
+                Aspect="Uniform"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                InputTransparent="True" 
+                Margin="0,6,0,0"/>
+
+            <Label
+                x:Name="UsageNavLabel"
+                Grid.Row="1"
+                Text="Usage"
+                FontSize="11"
+                TextColor="{AppThemeBinding Light={StaticResource LightMuted}, Dark={StaticResource DarkMuted}}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                InputTransparent="True" />
+
+        </Grid>
+
+        <!-- BACKUP -->
+        <Grid Grid.Column="2" RowDefinitions="Auto,Auto">
+
+            <Button
+                x:Name="BackupNavButton"
+                Grid.RowSpan="2"
+                Clicked="OnBackupTapped"
+                BackgroundColor="Transparent"
+                BorderWidth="0"
+                Padding="0"
+                CornerRadius="15"
+                Text=""
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+
+            <Path
+                x:Name="BackupNavIcon"
+                Grid.Row="0"
+                Data="M9,2 L9,8 L13,8 L6,16 L6,10 L3,10 Z"
+                Stroke="{AppThemeBinding Light={StaticResource LightMuted}, Dark={StaticResource DarkMuted}}"
+                StrokeThickness="1.7"
+                StrokeLineCap="Round"
+                StrokeLineJoin="Round"
+                Fill="Transparent"
+                WidthRequest="22"
+                HeightRequest="22"
+                Aspect="Uniform"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                InputTransparent="True"
+                Margin="0,6,0,0" />
+
+            <Label
+                x:Name="BackupNavLabel"
+                Grid.Row="1"
+                Text="Backup"
+                FontSize="11"
+                TextColor="{AppThemeBinding Light={StaticResource LightMuted}, Dark={StaticResource DarkMuted}}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                InputTransparent="True" />
+
+        </Grid>
+
+        <!-- INSIGHTS -->
+        <Grid Grid.Column="3" RowDefinitions="Auto,Auto">
+
+            <Button
+                x:Name="InsightsNavButton"
+                Grid.RowSpan="2"
+                Clicked="OnInsightsTapped"
+                BackgroundColor="Transparent"
+                BorderWidth="0"
+                Padding="0"
+                CornerRadius="15"
+                Text=""
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+
+            <Path
+                x:Name="InsightsNavIcon"
+                Grid.Row="0"
+                Data="M3,15 L3,10 L7,10 L7,15 Z M8,15 L8,6 L12,6 L12,15 Z M13,15 L13,3 L17,3 L17,15 Z"
+                Stroke="{AppThemeBinding Light={StaticResource LightMuted}, Dark={StaticResource DarkMuted}}"
+                StrokeThickness="1.5"
+                StrokeLineCap="Round"
+                StrokeLineJoin="Round"
+                Fill="Transparent"
+                WidthRequest="22"
+                HeightRequest="22"
+                Aspect="Uniform"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                InputTransparent="True"
+                Margin="0,6,0,0" />
+
+            <Label
+                x:Name="InsightsNavLabel"
+                Grid.Row="1"
+                Text="Insights"
+                FontSize="11"
+                TextColor="{AppThemeBinding Light={StaticResource LightMuted}, Dark={StaticResource DarkMuted}}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                InputTransparent="True" />
+
+        </Grid>
+
+    </Grid>
+</Border>
+
+        <!-- ===================================================== -->
+        <!-- CUSTOM IN-APP MODAL                                   -->
+        <!-- ===================================================== -->
+
+        <Grid x:Name="ModalOverlay"
+              Grid.RowSpan="2"
+              IsVisible="False"
+              Opacity="0"
+              ZIndex="100"
+              BackgroundColor="#99000000"
+              Padding="18">
+
+            <Border x:Name="ModalCard"
+                    MaximumWidthRequest="520"
+                    MaximumHeightRequest="720"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Fill"
+                    Padding="0"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightSurface},
+                                                      Dark={StaticResource DarkSurface}}"
+                    Stroke="{AppThemeBinding Light={StaticResource LightBorder},
+                                             Dark={StaticResource DarkBorder}}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 28">
+
+                <Grid RowDefinitions="Auto,*,Auto"
+                      Padding="0">
+
+                    <!-- Modal header -->
+
+                    <Grid Grid.Row="0"
+                          Padding="22,22,18,16"
+                          ColumnDefinitions="*,Auto"
+                          ColumnSpacing="12">
+
+                        <VerticalStackLayout Spacing="5">
+
+                            <Label x:Name="ModalEyebrow"
+                                   Text="VOLTWISE"
+                                   FontSize="10"
+                                   CharacterSpacing="1.5"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource VoltGreen}"/>
+
+                            <Label x:Name="ModalTitle"
+                                   Text="Details"
+                                   FontSize="23"
+                                   FontAttributes="Bold"/>
+
+                            <Label x:Name="ModalSubtitle"
+                                   Text="Update your information."
+                                   FontSize="12"
+                                   Style="{StaticResource SupportingText}"/>
+
+                        </VerticalStackLayout>
+
+                        <Button Grid.Column="1"
+                                Text="×"
+                                Clicked="OnCloseModalClicked"
+                                FontSize="26"
+                                Padding="0"
+                                WidthRequest="40"
+                                HeightRequest="40"
+                                CornerRadius="13"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightSurfaceAlt},
+                                                                  Dark={StaticResource DarkSurfaceAlt}}"
+                                TextColor="{AppThemeBinding Light={StaticResource LightText},
+                                                            Dark={StaticResource DarkText}}"
+                                VerticalOptions="Start"/>
+
+                    </Grid>
+
+                    <BoxView Grid.Row="0"
+                             HeightRequest="1"
+                             VerticalOptions="End"
+                             Margin="20,0"
+                             Color="{AppThemeBinding Light={StaticResource LightBorder},
+                                                     Dark={StaticResource DarkBorder}}"/>
+
+                    <!-- Dynamic modal fields -->
+
+                    <ScrollView Grid.Row="1"
+                                VerticalScrollBarVisibility="Default">
+
+                        <VerticalStackLayout x:Name="ModalContent"
+                                             Padding="22,18"
+                                             Spacing="14"/>
+
+                    </ScrollView>
+
+                    <!-- Dynamic modal actions -->
+
+                    <VerticalStackLayout Grid.Row="2"
+                                         Padding="22,12,22,22"
+                                         Spacing="9">
+
+                        <BoxView HeightRequest="1"
+                                 Color="{AppThemeBinding Light={StaticResource LightBorder},
+                                                         Dark={StaticResource DarkBorder}}"
+                                 Margin="0,0,0,5"/>
+
+                        <VerticalStackLayout x:Name="ModalActions"
+                                             Spacing="9"/>
+
+                    </VerticalStackLayout>
+
+                </Grid>
+
+            </Border>
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

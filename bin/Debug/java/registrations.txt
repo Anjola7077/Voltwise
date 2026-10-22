@@ -1,0 +1,8 @@
+plugin/LocalNotification/NotificationActionReceiver Plugin.LocalNotification.Platforms.NotificationActionReceiver, Plugin.LocalNotification
+	n_onReceive:(Landroid/content/Context;Landroid/content/Intent;)V:Android.Content.BroadcastReceiver, Mono.Android:n_OnReceive_Landroid_content_Context_Landroid_content_Intent_
+plugin/LocalNotification/NotificationForegroundService Plugin.LocalNotification.Platforms.NotificationForegroundService, Plugin.LocalNotification
+	n_onBind:(Landroid/content/Intent;)Landroid/os/IBinder;:Android.App.Service, Mono.Android:n_OnBind_Landroid_content_Intent_
+	n_onStartCommand:(Landroid/content/Intent;II)I:Android.App.Service, Mono.Android:n_OnStartCommand_Landroid_content_Intent_II
+	n_onDestroy:()V:Android.App.Service, Mono.Android:n_OnDestroy
+plugin/LocalNotification/ScheduledAlarmReceiver Plugin.LocalNotification.Platforms.ScheduledAlarmReceiver, Plugin.LocalNotification
+	n_onReceive:(Landroid/content/Context;Landroid/content/Intent;)V:Android.Content.BroadcastReceiver, Mono.Android:n_OnReceive_Landroid_content_Context_Landroid_content_Intent_
